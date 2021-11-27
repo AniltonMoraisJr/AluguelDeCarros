@@ -48,6 +48,15 @@ public class CustomExceptionHandler {
         return new ResponseEntity<ErrorResponseDTO>(e, headers, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(DocumentNotFound.class)
+    private HttpEntity<ErrorResponseDTO> handleValidationException(final HttpServletRequest request, final DocumentNotFound ex){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(CONTENT_TYPE, APPLICATION_JSON);
+        ErrorResponseDTO e = new ErrorResponseDTOBuilder(001, ex.getMessage())
+                .build();
+        return new ResponseEntity<ErrorResponseDTO>(e, headers, HttpStatus.NOT_FOUND);
+    }
+
 
     private String getMessage(String code, HttpServletRequest request, Object[] args) {
         try {
