@@ -57,8 +57,6 @@ public class ClienteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "302", description = "Cliente encontrado",
                     content = @Content),
-            @ApiResponse(responseCode = "302", description = "Cliente encontrado",
-                    content = @Content),
             @ApiResponse(responseCode = "404", description = "Erro ao encontrar cliente",
                     content = @Content) })
     @ApiImplicitParams({

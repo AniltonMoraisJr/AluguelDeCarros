@@ -1,5 +1,6 @@
 package edu.unifacef.aluguelDeCarros.dto;
 
+import edu.unifacef.aluguelDeCarros.domain.Carro;
 import edu.unifacef.aluguelDeCarros.domain.Classe;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CarroResponseDTO {
-    private Long idClasse;
+    private Long idCarro;
     @NotBlank
     private String marca;
     @NotBlank
@@ -23,5 +24,15 @@ public class CarroResponseDTO {
     @NotBlank
     private String placa;
     @NotBlank
-    private Classe classe;
+    private Classe classe;;
+
+    public CarroResponseDTO(Carro carro) {
+        this.idCarro = carro.getIdCarro();
+        this.marca = carro.getMarca();
+        this.modelo = carro.getModelo();
+        this.ano = carro.getAno();
+        this.cor = carro.getCor();
+        this.placa = carro.getPlaca();
+        this.classe = carro.getClasse();
+    }
 }
