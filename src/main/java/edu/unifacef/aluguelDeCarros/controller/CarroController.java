@@ -3,6 +3,7 @@ package edu.unifacef.aluguelDeCarros.controller;
 import edu.unifacef.aluguelDeCarros.dto.CarroRequestDTO;
 import edu.unifacef.aluguelDeCarros.dto.CarroResponseDTO;
 import edu.unifacef.aluguelDeCarros.service.CarroService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,7 +21,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/carro")
+@RequestMapping("/carros")
+@Api(value = "Carros",description = "End-points de carros", consumes="application/json")
 public class CarroController {
 
     @Autowired

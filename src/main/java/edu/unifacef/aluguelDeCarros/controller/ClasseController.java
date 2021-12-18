@@ -4,6 +4,7 @@ import edu.unifacef.aluguelDeCarros.dto.ClasseRequestDTO;
 import edu.unifacef.aluguelDeCarros.dto.ClasseResponseDTO;
 import edu.unifacef.aluguelDeCarros.dto.ClienteResponseDTO;
 import edu.unifacef.aluguelDeCarros.service.ClasseService;
+import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/classes")
+@Api(value = "Classes",description = "End-points de classes", consumes="application/json")
 public class ClasseController {
 
     @Autowired
