@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
@@ -23,7 +24,6 @@ public class EmpresaResponseDTO {
     @NotBlank
     private String endereco;
 
-    @NotBlank
     private Integer numero;
 
     @NotBlank
@@ -44,7 +44,6 @@ public class EmpresaResponseDTO {
     @NotBlank
     private String telefone;
 
-    @NotBlank
     private Double taxaDeEntrega;
 
     public EmpresaResponseDTO(Empresa empresa) {

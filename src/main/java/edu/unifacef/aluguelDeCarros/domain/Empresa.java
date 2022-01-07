@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Data
@@ -23,7 +24,6 @@ public class Empresa extends Audit implements Serializable {
     @NotBlank
     private String endereco;
 
-    @NotBlank
     private Integer numero;
 
     @NotBlank
@@ -44,7 +44,6 @@ public class Empresa extends Audit implements Serializable {
     @NotBlank
     private String telefone;
 
-    @NotBlank
     private Double taxaDeEntrega;
 
 
