@@ -42,7 +42,7 @@ public class CarroServiceImpl implements CarroService {
         Carro newCarro = carroRequestDTO.transformToDocument();
         if(id != null && !id.isBlank()){
             Carro cFound = this.repository.findById(id).orElseThrow(() -> new DocumentNotFound("Carro não encontrado"));
-            newCarro.setIdCarro(cFound.getIdCarro());
+            newCarro.setId(cFound.getId());
         }
         newCarro = this.repository.save(newCarro);
         return new CarroResponseDTO(newCarro);

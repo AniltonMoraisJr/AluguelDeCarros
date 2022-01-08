@@ -45,7 +45,7 @@ public class ClasseServiceImpl implements ClasseService {
         // Se for uma atualização, busco o cliente e seto o id
         if(id != null && !id.isBlank()){
             Classe cFound = this.repository.findById(id).orElseThrow(() -> new DocumentNotFound("Classe não encontrado"));
-            newClasse.setIdClasse(cFound.getIdClasse());
+            newClasse.setId(cFound.getId());
         }
         newClasse = this.repository.save(newClasse);
         return new ClasseResponseDTO(newClasse);

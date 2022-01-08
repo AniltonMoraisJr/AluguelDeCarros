@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CarroRequestDTO {
-    private Long idCarro;
+    private String idCarro;
     @NotBlank
     private String marca;
     @NotBlank
@@ -28,7 +28,6 @@ public class CarroRequestDTO {
 
     public Carro transformToDocument(){
         Carro c = new Carro();
-        c.setIdCarro(this.idCarro);
         c.setAno(this.ano);
         c.setCor(this.cor);
         c.setMarca(this.marca);

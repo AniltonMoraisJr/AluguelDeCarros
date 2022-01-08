@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClasseRequestDTO {
-    private Long idClasse;
+    private String idClasse;
     @NotBlank
     private ClassificacaoCarro classificacaoCarro;
     @NotBlank
@@ -24,7 +24,6 @@ public class ClasseRequestDTO {
 
     public Classe transformToDocument(){
         Classe c = new Classe();
-        c.setIdClasse(this.idClasse);
         c.setClassificacaoCarro(this.classificacaoCarro);
         c.setPrecoDiaria(this.precoDiaria);
         c.setPrecoMensal(this.precoMensal);
