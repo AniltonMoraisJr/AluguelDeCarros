@@ -30,20 +30,20 @@ public class ClasseController {
     @Autowired
     private ClasseService service;
 
-    @Operation(summary = "Retorna todos os clientes paginado")
+    @Operation(summary = "Retorna todos as classes paginado")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Clientes encontrados",
+            @ApiResponse(responseCode = "200", description = "Classes encontradas",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Erro ao encontrar clientes",
+            @ApiResponse(responseCode = "500", description = "Erro ao encontrar classes",
                     content = @Content) })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", dataType = "int", example = "0", defaultValue = "0", paramType = "query",
+            @ApiImplicitParam(name = "page", dataType = "Integer", dataTypeClass = java.lang.Integer.class, example = "0", defaultValue = "0", paramType = "query",
                     value = "Numero da página a ser buscada (0..N)"),
-            @ApiImplicitParam(name = "size", dataType = "int", example = "10", defaultValue = "10", paramType = "query",
+            @ApiImplicitParam(name = "size", dataType = "Integer", dataTypeClass = java.lang.Integer.class, example = "10", defaultValue = "10", paramType = "query",
                     value = "Quantidade de registros por página."),
-            @ApiImplicitParam(name = "sort", paramType = "query", example = "createdDate",
+            @ApiImplicitParam(name = "sort", dataType = "String", dataTypeClass = java.lang.String.class, paramType = "query", example = "createdDate",
                     value = "Campo a ser ordenado."),
-            @ApiImplicitParam(name = "direction", paramType = "query",
+            @ApiImplicitParam(name = "direction", dataType = "String", dataTypeClass = java.lang.String.class, paramType = "query",
                     value = "Direção da ordenação ASC|DESC.")
     })
     @GetMapping
@@ -55,13 +55,13 @@ public class ClasseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @Operation(summary = "Buscar um cliente pelo o id")
+    @Operation(summary = "Buscar uma classe pelo o id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "302", description = "Cliente encontrado",
+            @ApiResponse(responseCode = "302", description = "Classe encontrada",
                     content = @Content),
-            @ApiResponse(responseCode = "302", description = "Cliente encontrado",
+            @ApiResponse(responseCode = "302", description = "Classe encontrada",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Erro ao encontrar cliente",
+            @ApiResponse(responseCode = "404", description = "Erro ao encontrar classe",
                     content = @Content) })
     @GetMapping("/{id}")
     public ResponseEntity<ClasseResponseDTO> show(@PathVariable String id){
@@ -69,13 +69,13 @@ public class ClasseController {
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
 
-    @Operation(summary = "Salvar um novo cliente")
+    @Operation(summary = "Salvar uma nova classe")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cliente foi salvo",
+            @ApiResponse(responseCode = "201", description = "Classe foi salvo",
                     content = @Content(schema = @Schema(implementation = ClasseResponseDTO.class))),
-            @ApiResponse(responseCode = "400", description = "Cliente não foi salvo. Erro na requisição",
+            @ApiResponse(responseCode = "400", description = "Classe não foi salvo. Erro na requisição",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Cliente não foi salvo. Erro interno",
+            @ApiResponse(responseCode = "500", description = "Classe não foi salvo. Erro interno",
                     content = @Content) })
     @PostMapping
     public ResponseEntity<ClasseResponseDTO> store(@Validated @RequestBody ClasseRequestDTO request){
@@ -83,15 +83,15 @@ public class ClasseController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Atualizar um cliente")
+    @Operation(summary = "Atualizar uma classe")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cliente foi salvo",
+            @ApiResponse(responseCode = "201", description = "Classe foi salvo",
                     content = @Content(schema = @Schema(implementation = ClienteResponseDTO.class))),
-            @ApiResponse(responseCode = "400", description = "Cliente não foi salvo. Erro na requisição",
+            @ApiResponse(responseCode = "400", description = "Classe não foi salvo. Erro na requisição",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Erro ao encontrar cliente",
+            @ApiResponse(responseCode = "404", description = "Erro ao encontrar classe",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Cliente não foi salvo. Erro interno",
+            @ApiResponse(responseCode = "500", description = "Classe não foi salvo. Erro interno",
                     content = @Content) })
     @PutMapping("/{id}")
     public ResponseEntity<ClasseResponseDTO> update(@PathVariable String id, @Validated @RequestBody ClasseRequestDTO request){
@@ -99,15 +99,15 @@ public class ClasseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @Operation(summary = "Deletar um cliente")
+    @Operation(summary = "Deletar uma classe")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cliente foi deletado",
+            @ApiResponse(responseCode = "201", description = "Classe foi deletado",
                     content = @Content),
-            @ApiResponse(responseCode = "400", description = "Cliente não foi deletado. Erro na requisição",
+            @ApiResponse(responseCode = "400", description = "Classe não foi deletado. Erro na requisição",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Erro ao encontrar cliente",
+            @ApiResponse(responseCode = "404", description = "Erro ao encontrar classe",
                     content = @Content),
-            @ApiResponse(responseCode = "500", description = "Cliente não foi deletado. Erro interno",
+            @ApiResponse(responseCode = "500", description = "Classe não foi deletado. Erro interno",
                     content = @Content) })
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable String id){

@@ -34,13 +34,13 @@ public class EmpresaController {
             @ApiResponse(responseCode = "500", description = "Erro ao encontrar empresas",
                     content = @Content) })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", dataType = "int", example = "0", defaultValue = "0", paramType = "query",
+            @ApiImplicitParam(name = "page", dataType = "Integer", dataTypeClass = java.lang.Integer.class, example = "0", defaultValue = "0", paramType = "query",
                     value = "Numero da página a ser buscada (0..N)"),
-            @ApiImplicitParam(name = "size", dataType = "int", example = "10", defaultValue = "10", paramType = "query",
+            @ApiImplicitParam(name = "size", dataType = "Integer", dataTypeClass = java.lang.Integer.class, example = "10", defaultValue = "10", paramType = "query",
                     value = "Quantidade de registros por página."),
-            @ApiImplicitParam(name = "sort", paramType = "query", example = "createdDate",
+            @ApiImplicitParam(name = "sort", dataType = "String", dataTypeClass = java.lang.String.class, paramType = "query", example = "createdDate",
                     value = "Campo a ser ordenado."),
-            @ApiImplicitParam(name = "direction", paramType = "query",
+            @ApiImplicitParam(name = "direction", dataType = "String", dataTypeClass = java.lang.String.class, paramType = "query",
                     value = "Direção da ordenação ASC|DESC.")
     })
     @GetMapping
