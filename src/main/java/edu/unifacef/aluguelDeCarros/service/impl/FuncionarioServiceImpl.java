@@ -39,8 +39,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
-    public FuncionarioResponseDTO save(String id, FuncionarioRequestDTO funcionario) {
-        Funcionario newFuncionario = funcionario.transformToDocument();
+    public FuncionarioResponseDTO save(String empresaId, String id, FuncionarioRequestDTO funcionario) {
+        Funcionario newFuncionario = funcionario.transformToDocument(empresaId);
 
         // Se for uma atualização, busco o Funcionario e seto o id
         if(id != null && !id.isBlank()){

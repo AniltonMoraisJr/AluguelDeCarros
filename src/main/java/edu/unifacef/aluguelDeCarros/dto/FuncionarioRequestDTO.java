@@ -21,9 +21,6 @@ public class FuncionarioRequestDTO {
     private String id;
 
     @NotBlank
-    private String empresaId;
-
-    @NotBlank
     private String nome;
 
     @NotBlank
@@ -50,7 +47,7 @@ public class FuncionarioRequestDTO {
     @Valid
     private Endereco endereco;
 
-    public Funcionario transformToDocument(){
+    public Funcionario transformToDocument(String empresaId){
         Funcionario f = new Funcionario();
         f.setNome(this.nome);
         f.setFuncao(this.funcao);
@@ -63,7 +60,7 @@ public class FuncionarioRequestDTO {
         f.setStatus(Status.Ativo);
 
         Empresa e = new Empresa();
-        e.setId(this.empresaId);
+        e.setId(empresaId);
 
         f.setEmpresa(e);
         return f;

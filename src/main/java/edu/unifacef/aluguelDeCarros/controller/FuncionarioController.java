@@ -23,7 +23,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/funcionarios")
+@RequestMapping("/empresas/{empresaId}/funcionarios")
 @Api(value = "Funcionario",description = "End-points de funcionarios", consumes="application/json")
 public class FuncionarioController {
 
@@ -47,7 +47,8 @@ public class FuncionarioController {
                     value = "Direção da ordenação ASC|DESC.")
     })
     @GetMapping
-    public ResponseEntity<Page<FuncionarioResponseDTO>> index(@RequestParam(value = "page", defaultValue = "0", required = false) int page,
+    public ResponseEntity<Page<FuncionarioResponseDTO>> index(@PathVariable String empresaId,
+                                                              @RequestParam(value = "page", defaultValue = "0", required = false) int page,
                                                               @RequestParam(value = "size", defaultValue = "10", required = false) int size,
                                                               @RequestParam(value = "sort", defaultValue = "createdDate", required = false) String sort,
                                                               @RequestParam(value = "direction", defaultValue = "ASC", required = false) String direction){
@@ -68,7 +69,7 @@ public class FuncionarioController {
                     value = "Id do funcionário")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<FuncionarioResponseDTO> show(@PathVariable String id){
+    public ResponseEntity<FuncionarioResponseDTO> show(@PathVariable String empresaId,@PathVariable String id){
         FuncionarioResponseDTO response = this.service.findById(id);
         return new ResponseEntity<FuncionarioResponseDTO>(response, HttpStatus.FOUND);
     }
@@ -82,8 +83,9 @@ public class FuncionarioController {
             @ApiResponse(responseCode = "500", description = "Funcionario não foi salvo. Erro interno",
                     content = @Content) })
     @PostMapping
-    public ResponseEntity<FuncionarioResponseDTO> store(@Validated @RequestBody FuncionarioRequestDTO request){
-        FuncionarioResponseDTO response = this.service.save(null, request);
+    public ResponseEntity<FuncionarioResponseDTO> store(@PathVariable String empresaId,
+                                                        @Validated @RequestBody FuncionarioRequestDTO request){
+        FuncionarioResponseDTO response = this.service.save(empresaId, null, request);
         return new ResponseEntity<FuncionarioResponseDTO>(response, HttpStatus.CREATED);
     }
 
@@ -102,8 +104,10 @@ public class FuncionarioController {
                     value = "Id do funcionário")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<FuncionarioResponseDTO> update(@PathVariable String id, @Validated @RequestBody FuncionarioRequestDTO request){
-        FuncionarioResponseDTO response = this.service.save(id, request);
+    public ResponseEntity<FuncionarioResponseDTO> update(@PathVariable String empresaId,
+                                                         @PathVariable String id,
+                                                         @Validated @RequestBody FuncionarioRequestDTO request){
+        FuncionarioResponseDTO response = this.service.save(empresaId, id, request);
         return new ResponseEntity<FuncionarioResponseDTO>(response, HttpStatus.OK);
     }
 
