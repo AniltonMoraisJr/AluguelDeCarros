@@ -14,26 +14,28 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CarroResponseDTO {
-    private String idCarro;
-    @NotBlank
+    private String id;
+
     private String marca;
-    @NotBlank
+
     private String modelo;
-    @NotBlank
+
     private Long ano;
-    @NotBlank
+
     private String cor;
-    @NotBlank
+
     private String placa;
-    @NotBlank
+
     private Classe classe;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdDate;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastModifiedDate;
 
     public CarroResponseDTO(Carro carro) {
-        this.idCarro = carro.getId();
+        this.id = carro.getId();
         this.marca = carro.getMarca();
         this.modelo = carro.getModelo();
         this.ano = carro.getAno();

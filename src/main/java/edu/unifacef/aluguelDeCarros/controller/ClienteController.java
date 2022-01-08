@@ -35,9 +35,9 @@ public class ClienteController {
             @ApiResponse(responseCode = "500", description = "Erro ao encontrar clientes",
                     content = @Content) })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", dataType = "integer", example = "0", defaultValue = "0", paramType = "query",
+            @ApiImplicitParam(name = "page", dataType = "int", example = "0", defaultValue = "0", paramType = "query",
                     value = "Numero da página a ser buscada (0..N)"),
-            @ApiImplicitParam(name = "size", dataType = "integer", example = "10", defaultValue = "10", paramType = "query",
+            @ApiImplicitParam(name = "size", dataType = "int", example = "10", defaultValue = "10", paramType = "query",
                     value = "Quantidade de registros por página."),
             @ApiImplicitParam(name = "sort", paramType = "query", example = "createdDate",
                     value = "Campo a ser ordenado."),
@@ -94,7 +94,7 @@ public class ClienteController {
             @ApiResponse(responseCode = "500", description = "Cliente não foi salvo. Erro interno",
                     content = @Content) })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", dataType = "string",  paramType = "path",
+            @ApiImplicitParam(name = "id", dataType = "String",  paramType = "path",
                     value = "Id do cliente")
     })
     @PutMapping("/{id}")
@@ -114,7 +114,7 @@ public class ClienteController {
             @ApiResponse(responseCode = "500", description = "Cliente não foi deletado. Erro interno",
                     content = @Content) })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", dataType = "string",  paramType = "path",
+            @ApiImplicitParam(name = "id", dataType = "String",  paramType = "path",
                     value = "Id do cliente")
     })
     @DeleteMapping("/{id}")

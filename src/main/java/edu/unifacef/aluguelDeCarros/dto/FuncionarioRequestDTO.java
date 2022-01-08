@@ -18,8 +18,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FuncionarioRequestDTO {
-    private String id;
-
     @NotBlank
     private String nome;
 

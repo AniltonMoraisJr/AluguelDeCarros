@@ -1,10 +1,12 @@
 package edu.unifacef.aluguelDeCarros.service.impl;
 
 import edu.unifacef.aluguelDeCarros.domain.Carro;
+import edu.unifacef.aluguelDeCarros.domain.Classe;
 import edu.unifacef.aluguelDeCarros.dto.CarroRequestDTO;
 import edu.unifacef.aluguelDeCarros.dto.CarroResponseDTO;
 import edu.unifacef.aluguelDeCarros.exception.DocumentNotFound;
 import edu.unifacef.aluguelDeCarros.repository.CarroRepository;
+import edu.unifacef.aluguelDeCarros.repository.ClasseRepository;
 import edu.unifacef.aluguelDeCarros.service.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,9 @@ public class CarroServiceImpl implements CarroService {
 
     @Autowired
     private CarroRepository repository;
+
+    @Autowired
+    private ClasseRepository classeRepository;
 
     @Override
     public Page<CarroResponseDTO> findAll(Pageable pageable) {
@@ -43,6 +48,10 @@ public class CarroServiceImpl implements CarroService {
         if(id != null && !id.isBlank()){
             Carro cFound = this.repository.findById(id).orElseThrow(() -> new DocumentNotFound("Carro não encontrado"));
             newCarro.setId(cFound.getId());
+        }
+        if(carroRequestDTO.getIdClasse() != null && !carroRequestDTO.getIdClasse().isBlank()){
+            Classe classe = this.classeRepository.findById(carroRequestDTO.getIdClasse()).orElseThrow(() -> new DocumentNotFound("Classe não encontrada"));
+            newCarro.setClasse(classe);
         }
         newCarro = this.repository.save(newCarro);
         return new CarroResponseDTO(newCarro);

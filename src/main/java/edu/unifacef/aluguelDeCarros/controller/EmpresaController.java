@@ -33,9 +33,22 @@ public class EmpresaController {
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Erro ao encontrar empresas",
                     content = @Content) })
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", dataType = "int", example = "0", defaultValue = "0", paramType = "query",
+                    value = "Numero da página a ser buscada (0..N)"),
+            @ApiImplicitParam(name = "size", dataType = "int", example = "10", defaultValue = "10", paramType = "query",
+                    value = "Quantidade de registros por página."),
+            @ApiImplicitParam(name = "sort", paramType = "query", example = "createdDate",
+                    value = "Campo a ser ordenado."),
+            @ApiImplicitParam(name = "direction", paramType = "query",
+                    value = "Direção da ordenação ASC|DESC.")
+    })
     @GetMapping
-    public ResponseEntity<Page<EmpresaResponseDTO>> index(Pageable pageable){
-        Page<EmpresaResponseDTO> response = this.service.findAll(pageable);
+    public ResponseEntity<Page<EmpresaResponseDTO>> index(@RequestParam(value = "page", defaultValue = "0", required = false) int page,
+                                                          @RequestParam(value = "size", defaultValue = "10", required = false) int size,
+                                                          @RequestParam(value = "sort", defaultValue = "createdDate", required = false) String sort,
+                                                          @RequestParam(value = "direction", defaultValue = "ASC", required = false) String direction){
+        Page<EmpresaResponseDTO> response = this.service.findAll(PageRequest.of(page, size, direction.equals("ASC") ? Sort.by(sort).ascending() : Sort.by(sort).descending()));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

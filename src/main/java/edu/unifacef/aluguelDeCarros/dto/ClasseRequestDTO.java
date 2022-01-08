@@ -6,20 +6,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClasseRequestDTO {
-    private String idClasse;
-    @NotBlank
+    @NotNull
     private ClassificacaoCarro classificacaoCarro;
-    @NotBlank
+
+    @NotNull
+    @PositiveOrZero
     private Double precoDiaria;
-    @NotBlank
+
+    @NotNull
+    @PositiveOrZero
     private Double precoSemanal;
-    @NotBlank
+
+    @NotNull
+    @PositiveOrZero
     private Double precoMensal;
 
     public Classe transformToDocument(){

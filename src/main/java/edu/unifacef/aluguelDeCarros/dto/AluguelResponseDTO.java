@@ -4,32 +4,35 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.unifacef.aluguelDeCarros.domain.Aluguel;
 import edu.unifacef.aluguelDeCarros.domain.Carro;
 import edu.unifacef.aluguelDeCarros.domain.Empresa;
+import edu.unifacef.aluguelDeCarros.enums.AluguelStatus;
 import edu.unifacef.aluguelDeCarros.enums.EstadoCarro;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AluguelResponseDTO {
 
     private String id;
-    @NotBlank
+
     private Carro carro;
-    @NotBlank
+
     private Empresa empresaSaida;
     private Empresa empresaChegada;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @NotBlank
     private LocalDate dataSaida;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDevolucao;
     private Double taxaEntrega;
-    @NotBlank
     private Long odometroSaida;
     private Long odometroDevolucao;
     private Long volumeTanqueDevolucao; //%0, %25, %50
-    @NotBlank
-    private String statusAluguel; //aberto, em andamento, finalizado
-    @NotBlank
+    private AluguelStatus status; //aberto, em andamento, finalizado
     private EstadoCarro estadoCarroSaida;
     private EstadoCarro estadoCarroChegada;
 
@@ -44,7 +47,7 @@ public class AluguelResponseDTO {
         this.odometroSaida = aluguel.getOdometroSaida();
         this.odometroDevolucao = aluguel.getOdometroDevolucao();
         this.volumeTanqueDevolucao = aluguel.getVolumeTanqueDevolucao();
-        this.statusAluguel = aluguel.getStatusAluguel();
+        this.status = aluguel.getStatus();
         this.estadoCarroSaida = aluguel.getEstadoCarroSaida();
         this.estadoCarroChegada = aluguel.getEstadoCarroChegada();
     }

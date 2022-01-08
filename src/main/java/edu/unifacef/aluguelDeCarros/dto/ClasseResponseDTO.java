@@ -14,14 +14,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClasseResponseDTO {
-    private String idClasse;
-    @NotBlank
+    private String id;
+
     private ClassificacaoCarro classificacaoCarro;
-    @NotBlank
+
     private Double precoDiaria;
-    @NotBlank
+
     private Double precoSemanal;
-    @NotBlank
+
     private Double precoMensal;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -31,7 +31,7 @@ public class ClasseResponseDTO {
     private LocalDateTime lastModifiedDate;
 
     public ClasseResponseDTO(Classe classe) {
-        this.idClasse = classe.getId();
+        this.id = classe.getId();
         this.classificacaoCarro = classe.getClassificacaoCarro();
         this.precoDiaria = classe.getPrecoDiaria();
         this.precoMensal = classe.getPrecoMensal();

@@ -17,8 +17,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClienteRequestDTO {
-    private String id;
-
     @NotBlank
     private String nome;
 

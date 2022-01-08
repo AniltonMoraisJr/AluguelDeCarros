@@ -17,10 +17,13 @@ import java.io.Serializable;
 public class Classe extends Audit implements Serializable {
     @NotBlank
     private ClassificacaoCarro classificacaoCarro;
+
     @NotBlank
     private Double precoDiaria;
+
     @NotBlank
     private Double precoSemanal;
+
     @NotBlank
     private Double precoMensal;
 

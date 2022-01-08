@@ -6,25 +6,36 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CarroRequestDTO {
-    private String idCarro;
+
     @NotBlank
     private String marca;
+
     @NotBlank
     private String modelo;
-    @NotBlank
+
+    @NotNull
+    @Positive
+    @Min(1940)
     private Long ano;
+
     @NotBlank
     private String cor;
+
     @NotBlank
     private String placa;
+
     @NotBlank
-    private Classe classe;
+    private String idClasse;
 
     public Carro transformToDocument(){
         Carro c = new Carro();
@@ -33,7 +44,6 @@ public class CarroRequestDTO {
         c.setMarca(this.marca);
         c.setModelo(this.modelo);
         c.setPlaca(this.placa);
-        c.setClasse(this.classe);
         return c;
     }
 }
